@@ -5,6 +5,9 @@
   "repository": "https://github.com/kelechinwaji/REST-API.git",
   "author": "kelechi Nwaji <78841792+kelechinwaji@users.noreply.github.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "config": "^3.3.7",
