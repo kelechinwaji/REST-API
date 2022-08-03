@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
+//password hashing algorithm
 userSchema.pre('save', async function (next) {
     let user = this as userDocument
 
@@ -33,6 +34,13 @@ userSchema.pre('save', async function (next) {
 
     return next();
 })
+
+//comparing password for login
+userSchema.methods.comparePassword = async function (candidatePassword: string) {
+    const user = this as userDocument;
+
+    return bcrypt.compare(candidatePassword, user.password).catch((e) => false)
+}
 
 const UserModel = mongoose.model('User', userSchema);
 
