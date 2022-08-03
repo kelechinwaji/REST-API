@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose  from "mongoose";
 import bcrypt from  'bcrypt';
 import config from 'config';
 
@@ -16,6 +16,22 @@ const userSchema = new mongoose.Schema({
     password:{type: String, required: true}
 },{
     timestamps: true
+})
+
+userSchema.pre('save', async function (next) {
+    let user = this as userDocument
+
+    if(!user.isModified("password")){
+       return next(); 
+    }
+
+    const salt = await bcrypt.genSalt(config.get<number>("saltWorkFactor"));
+
+    const hash = await bcrypt.hashSync(user.password, salt);
+
+    user.password = hash;
+
+    return next();
 })
 
 const UserModel = mongoose.model('User', userSchema);
