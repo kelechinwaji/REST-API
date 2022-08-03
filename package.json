@@ -1,0 +1,8 @@
+{
+  "name": "REST-API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kelechinwaji/REST-API.git",
+  "author": "kelechi Nwaji <78841792+kelechinwaji@users.noreply.github.com>",
+  "license": "MIT"
+}
