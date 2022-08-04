@@ -22,4 +22,4 @@ export const createUserShema = object({
 });
 
 
-export type CreateUserInput = TypeOf<typeof createUserShema>;
+export type CreateUserInput =Omit<TypeOf<typeof createUserShema>, "body.passwordConfirmation">;
