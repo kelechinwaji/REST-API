@@ -3,7 +3,7 @@ import { CreateUserInput } from '../schema/user.schema';
 import { createUser } from '../service/user.service';
 import logger from '../utils/logger'
 
-export const createUserHandler= async (req: Request<{}, {}, CreateUserInput>, res:Response)=>{
+export const createUserHandler= async (req: Request< {}, CreateUserInput>, res:Response)=>{
 try {
    const user = await createUser(req.body);
    return user;
