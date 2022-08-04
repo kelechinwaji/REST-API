@@ -1,4 +1,5 @@
-import {object, string} from 'zod';
+import { type } from 'os';
+import {object, string, TypeOf} from 'zod';
 
 export const createUserShema = object({
     body: object({
@@ -19,3 +20,6 @@ export const createUserShema = object({
         path: ["passwordConfirmation"],
     }),
 });
+
+
+export type CreateUserInput = TypeOf<typeof createUserShema>;
