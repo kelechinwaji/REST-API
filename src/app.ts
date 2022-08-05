@@ -1,9 +1,8 @@
 import express from "express";
-import  config  from "config";
+import config  from "config";
 import connect from "./utils/connect";
 import logger from "./utils/logger";
 import routes from "./router";
-
 
 const port = config.get<number>('port')
 
