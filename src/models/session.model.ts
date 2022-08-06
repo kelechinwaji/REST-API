@@ -15,7 +15,7 @@ export interface SchemaDocument extends mongoose.Document{
 const sessionSchema = new mongoose.Schema({
     user:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     valid:{type: Boolean, default: true},
-    userAgent: {type: string},
+    userAgent: {type: String},
 },{
     timestamps: true
 })
