@@ -11,4 +11,19 @@ export const signJwt = (object:Object, options?: jwt.SignOptions | undefined) =>
     })
 }
 
-const verifyJwt = () =>{}
+export const verifyJwt = (token: string) =>{
+    try {
+       const decoded = jwt.verify(token, publicKey);
+       return {
+        valid: true,
+        expired: false,
+        decoded: null
+       } 
+    } catch (e: any) {
+        return {
+            valid: false,
+            expired: e.message === "jwt expired",
+            decoded: null,
+        };
+    }
+}
