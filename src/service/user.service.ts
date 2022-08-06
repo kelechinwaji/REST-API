@@ -1,11 +1,14 @@
 import { compare } from 'bcrypt';
+import {omit} from 'lodash'
 import {DocumentDefinition} from 'mongoose';
 import UserModel, {userDocument} from '../models/user.model';
 
 
+
 export const createUser = async (input: DocumentDefinition<Omit<userDocument, "createdAt" | "updateAt" | "comparePassword">>)=>{
  try {
-    return await UserModel.create(input)
+    const user = await UserModel.create(input)
+    return omit(user.toJSON(), 'password')
  } catch (e: any) {
     throw new Error(e);
  }
@@ -19,4 +22,6 @@ if (!user){
 }
 
 const isValid = await user.comparePassword(password)
-}
+
+return omit(user.toJSON(), 'password')
+}  
