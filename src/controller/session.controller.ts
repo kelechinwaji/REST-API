@@ -30,7 +30,7 @@ export const createUserSessionHandler = async (req:Request , res:Response)=>{
 export const getUserSessionsHandler = async (req:Request , res:Response)=>{
     const userId = res.locals.user._id;
 
-    const sessions = await findSessions({ user: userId, value: false});
+    const sessions = await findSessions({ user: userId, value: true});
 
     return res.send(sessions)
 
