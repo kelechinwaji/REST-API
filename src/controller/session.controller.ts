@@ -27,3 +27,6 @@ export const createUserSessionHandler = async (req:Request , res:Response)=>{
     return res.send({accessToken, refreshToken})
 }
 
+export const getUserSessionsHandler = async (req:Request , res:Response)=>{
+    
+}
