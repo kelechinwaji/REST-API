@@ -1,5 +1,5 @@
 import {Response, Request} from "express"
-import { createSession } from "../service/session.service";
+import { createSession, findSessions } from "../service/session.service";
 import { validatePassword } from "../service/user.service"
 import { signJwt } from "../utils/jwt.utils";
 import config from "config";
@@ -28,5 +28,10 @@ export const createUserSessionHandler = async (req:Request , res:Response)=>{
 }
 
 export const getUserSessionsHandler = async (req:Request , res:Response)=>{
-    
+    const userId = res.locals.user._id;
+
+    const sessions = await findSessions({ user: userId, value: false});
+
+    return res.send(sessions)
+
 }
